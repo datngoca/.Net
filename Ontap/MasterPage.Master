@@ -1,0 +1,60 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="Ontap.MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:Table ID="Table1" runat="server" Width="100%">
+                <asp:TableRow runat="server">
+                    <asp:TableCell runat="server" Width="25%">
+                        <h2>DANH MỤC HOA</h2>
+                        <asp:Repeater ID="CategoryRepeater" runat="server">
+                            <ItemTemplate>
+                                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# "Products.aspx?CategoryID=" + Eval("MaDM") %>' Text='<%# Eval("TenDM") %>'></asp:HyperLink>
+                                <br />
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </asp:TableCell>
+                    <asp:TableCell runat="server" Width="50%">
+                        <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+                    </asp:TableCell>
+                    <asp:TableCell runat="server" Width="25%">
+                        <h3>Thông tin đăng nhập</h3>
+                        <asp:Table ID="LoginTable" runat="server">
+                            <asp:TableRow runat="server">
+                                <asp:TableCell runat="server">Tên đăng nhập:</asp:TableCell>
+                                <asp:TableCell runat="server">
+                                    <asp:TextBox ID="txtUsername" runat="server"></asp:TextBox>
+                                </asp:TableCell>
+                            </asp:TableRow>
+                            <asp:TableRow runat="server">
+                                <asp:TableCell runat="server">Mật khẩu:</asp:TableCell>
+                                <asp:TableCell runat="server">
+                                    <asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>
+                                </asp:TableCell>
+                            </asp:TableRow>
+                            <asp:TableRow runat="server">
+                                <asp:TableCell runat="server" ColumnSpan="2">
+                                    <asp:CheckBox ID="chkRemember" runat="server" Text="Ghi nhớ mật khẩu" />
+                                </asp:TableCell>
+                            </asp:TableRow>
+                            <asp:TableRow runat="server">
+                                <asp:TableCell runat="server" ColumnSpan="2" style="text-align: center;">
+                                    <asp:Button ID="btnLogin" runat="server" Text="Đăng nhập" OnClick="btnLogin_Click" />
+                                </asp:TableCell>
+                            </asp:TableRow>
+                        </asp:Table>
+                    </asp:TableCell>
+                </asp:TableRow>
+            </asp:Table>
+        </div>
+    </form>
+</body>
+</html>
